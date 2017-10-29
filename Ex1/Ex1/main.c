@@ -13,6 +13,7 @@ int pairCount(int, int);
 int digitInNum(int, int);
 
 
+
 int main() {
 //    q1();
 //    q2();
