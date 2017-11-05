@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 
-
 int main() {
     const int len = 20;
     int ns[len];
