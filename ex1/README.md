@@ -2,7 +2,8 @@
 
 
 
-# Question 1:
+Question 1:
+===========
 ### Source code:
 ```
 ex1_a.c
@@ -18,7 +19,8 @@ gcc -o ex1_a ex1_a.c
 
 
 
-# Question 2:
+Question 2:
+===========
 ### Source code:
 ```
 ex1_b.c
@@ -34,7 +36,8 @@ gcc -o ex1_b ex1_b.c
 
 
 
-# Question 3:
+Question 3:
+===========
 ### Source code:
 ```
 ex1_c.c
@@ -50,7 +53,8 @@ gcc -o ex1_c ex1_c.c
 
 
 
-# Question 4:
+Question 4:
+===========
 ### Source code:
 ```
 ex1_d.c
