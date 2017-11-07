@@ -27,3 +27,31 @@ gcc -o ex1_b ex1_b.c
 ```
 ./ex1_b
 ```
+
+## Question 3:
+### Source code:
+```
+ex1_c.c
+```
+### Compile:
+```
+gcc -o ex1_c ex1_c.c
+```
+### Run:
+```
+./ex1_c
+```
+
+## Question 4:
+### Source code:
+```
+ex1_d.c
+```
+### Compile:
+```
+gcc -o ex1_d ex1_d.c
+```
+### Run:
+```
+./ex1_d
+```
