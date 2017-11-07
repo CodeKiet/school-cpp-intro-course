@@ -1,7 +1,7 @@
 # Ex1 Read Me
-
-
-
+  
+  
+  
 Question 1:
 ===========
 ### Source code:
@@ -16,9 +16,9 @@ gcc -o ex1_a ex1_a.c
 ```
 ./ex1_a
 ```
-
-
-
+  
+  
+  
 Question 2:
 ===========
 ### Source code:
@@ -33,9 +33,9 @@ gcc -o ex1_b ex1_b.c
 ```
 ./ex1_b
 ```
-
-
-
+  
+  
+  
 Question 3:
 ===========
 ### Source code:
@@ -50,9 +50,9 @@ gcc -o ex1_c ex1_c.c
 ```
 ./ex1_c
 ```
-
-
-
+  
+  
+  
 Question 4:
 ===========
 ### Source code:
