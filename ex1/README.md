@@ -43,7 +43,7 @@ gcc -o ex1_a ex1_a.c
 
 
   
-Question 2:
+ex1_b:
 ===========
 ### Program Overview:
 	Program takes sets of 2 integers at a time until reaches the set 0 0.
@@ -57,7 +57,7 @@ ex1_b.c
 	
 ### Functions:
 ```
-main(void)				 		   // main program
+main(void)
 int pairCount(int a, int b)  // counts of how many digits of first int are in second int
 int digitInNum(int digit, int num) // if digit is in num returns 1, otherwise 0
 ```
@@ -80,7 +80,7 @@ gcc -o ex1_b ex1_b.c
   
 
   
-Question 3:
+ex1_c:
 ===========
 ### Program Overview:
 	Program reads list of integers from user until reaches -1
@@ -118,13 +118,21 @@ gcc -o ex1_c ex1_c.c
 ./ex1_c
 ```
   
-  
+
+ex1_d:
+===========
+
 ### Program Overview:
 	This program generates 10 random numbers and prints their
 	palindromes based on this specification:
 		1. If the number is a palindrome already: prints it
 		2. Reverses the number and attaches the reversed number to the end (Thus creating a palindrome)
- 
+
+### Source code:
+```
+ex1_d.c
+```
+
 ### Functions:
 ```
 main(void) 
@@ -134,16 +142,9 @@ int digits(int) // returns amount of digits of any positive integer
 ### Input:
 	None.
 
-
 ### Output:
 	prints to console a List of 10 randomly generated palindromes based on specification
 
-Question 4:
-===========
-### Source code:
-```
-ex1_d.c
-```
 ### Compile:
 ```
 gcc -o ex1_d ex1_d.c
