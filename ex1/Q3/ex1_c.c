@@ -29,7 +29,7 @@ int main() {
         }
         totalCounter += num; // add num to new total
         avg = totalCounter / i; // create new average
-        scanf("%d", &num); //
+        scanf("%d", &num);
     }
 
     printf("\nNumber of special numbers: %d", numOfSpecials);

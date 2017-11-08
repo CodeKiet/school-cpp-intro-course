@@ -15,17 +15,12 @@ int pairCount(int, int);
 int digitInNum(int, int);
 
 
-
 int main() {
     int a, b;
-    scanf("%d %d", &a, &b);
-    while(a != 0 || b != 0) {
+    for(scanf("%d %d", &a, &b); a != 0 || b != 0; scanf("%d %d", &a, &b))
         printf(" %d\n", pairCount(a, b));
-        scanf("%d %d", &a, &b);
-    }
     return 0;
 }
-
 /**
  * assuming pair is not (0, 0)
  * @param a
