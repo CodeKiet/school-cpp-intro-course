@@ -16,13 +16,15 @@
 #include <time.h>
 #include <string.h>
 
+#define LEN 10
+
 int digits(int);
 
 
 int main() {
     srand((unsigned int)time(NULL)); // create a random seed based on current time
 
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < LEN; ++i) {
         int randomNum = rand(); // generate pseudorandom number
         printf("\noriginal number: %d", randomNum);
 

@@ -28,8 +28,8 @@ int main() {
  * @return count of how many digits of a are in b
  */
 int pairCount(int a, int b) {
-    if (a == 0)
-        return 0;
+    if (a <= 9)
+        return digitInNum(a, b);
     return digitInNum(a % 10, b) + pairCount(a / 10, b);
 }
 
@@ -40,6 +40,15 @@ int pairCount(int a, int b) {
  * @return 1 if digit is in num, 0 if not
  */
 int digitInNum(int digit, int num) {
+    if (digit == 0) {
+        if (num == 0)
+            return 1;
+        if (num <= 9)
+            return 0;
+        if (digit == num % 10)
+            return 1;
+        return digitInNum(digit, num / 10);
+    }
     if (num == 0)
         return 0;
     if (digit == num % 10)
