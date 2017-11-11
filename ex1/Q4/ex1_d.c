@@ -16,7 +16,7 @@
 #include <time.h>
 #include <string.h>
 
-#define LEN 10
+#define RANDOM_NUMBERS_TO_GENERATE 10
 
 int digits(int);
 
@@ -24,7 +24,7 @@ int digits(int);
 int main() {
     srand((unsigned int)time(NULL)); // create a random seed based on current time
 
-    for (int i = 0; i < LEN; ++i) {
+    for (int i = 0; i < RANDOM_NUMBERS_TO_GENERATE; ++i) {
         int randomNum = rand(); // generate pseudorandom number
         printf("\noriginal number: %d", randomNum);
 
