@@ -16,22 +16,22 @@
 
 int main() {
     int numOfSpecials = 0; // how many special numbers were found counter (will be printed in the end
-    int totalCounter = 0; // sum total of all input numbers gotten from user
+    double totalCounter = 0; // sum total of all input numbers gotten from user
     double avg = -1; // current average of previous elements
-    int num;
+    double num;
 
-    scanf("%d", &num);
+    scanf("%lf", &num);
 
     for (int i = 1;num != -1; i++) {
         if (avg == num) {
-            printf("\n%d place: %d\n", num, i);
+            printf("\n%lf place: %d\n", num, i);
             numOfSpecials++;
         }
         totalCounter += num; // add num to new total
         avg = totalCounter / i; // create new average
-        scanf("%d", &num);
+        scanf("%lf", &num);
     }
 
-    printf("\nNumber of special numbers: %d", numOfSpecials);
+    printf("\nNumber of special numbers: %d\n", numOfSpecials);
     return 0;
 }
