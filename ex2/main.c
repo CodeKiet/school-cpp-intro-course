@@ -1,32 +1,32 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "list.h"
-#define N 30
+/**
+ * Student Name: Eitan Sternlicht
+ * ID: 204070635
+ * Exercise: 2
+ */
 
-void destructStudents(Stud students[], int size) {
-    for (int i = 0; i < size; ++i) {
-        destructLinkedList(getNextGradeNode, students[i].gradesList);
-        destructLinkedList(getNextIncomeNode, students[i].incomesList);
-    }
-}
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include "list.h"
+
+
 
 int main() {
     Stud students[N];
 
-    char op[4];
-    int currentIndex = 0;
+    char op[OP_LENGTH + 1]; // op code
+    int currentIndex = 0; // students in array
 
     scanf("%s", op);
-
-    while (strcmp(op, "end") != 0) {
-        if (strcmp(op, "ns") == 0) {
+    // main program loop
+    while (strcmp(op, OP_CODE_END_PROGRAM) != 0) {
+        if (strcmp(op, OP_CODE_NEW_STUDENT) == 0) {
             unsigned int id;
             scanf("%u", &id);
-            int success = addStudent(students, currentIndex, id);
-            if (success)
+            bool success = addStudent(students, currentIndex, id);
+            if (success) // increase student count
                 currentIndex++;
-        } else if (strcmp(op, "ng") == 0) {
+        } else if (strcmp(op, OP_CODE_NEW_GRADE) == 0) {
             unsigned int id;
             char courseName[COURSE_NAME_MAX_LENGTH];
             unsigned int grade;
@@ -36,11 +36,10 @@ int main() {
 
             Stud* stud = getStudent(students, id, currentIndex);
             if (stud == NULL) {
-                printf("NA");
+                printf(ERROR_NOT_AVAILABLE);
                 destructStudents(students, currentIndex);
                 return 0;
             }
-
             Grade newGrade;
             strcpy(newGrade.courseName, courseName);
             newGrade.grade = grade;
@@ -48,65 +47,63 @@ int main() {
             (stud->gradesCount)++;
             stud->gradesTotal += grade;
             stud->averageOfGrades = stud->gradesTotal / stud->gradesCount;
-        } else if (strcmp(op, "ni") == 0) {
+        } else if (strcmp(op, OP_CODE_NEW_INCOME) == 0) {
             unsigned int id;
-            char workName[WORK_NAME_MAX_LENGTH];
+            char workName[DATE_MAX_LENGTH];
             float income;
             scanf("%d", &id);
             scanf("%s", workName);
             scanf("%f", &income);
 
+
             Stud* stud = getStudent(students, id, currentIndex);
             if (stud == NULL) {
-                printf("NA");
+                printf(ERROR_NOT_AVAILABLE);
                 destructStudents(students, currentIndex);
                 return 0;
             }
             Income newIncome;
-            strcpy(newIncome.workName, workName);
+            strcpy(newIncome.date, workName);
             newIncome.amount = income;
             addToList(createIncomeNode, compareIncomeNode, getNextIncomeNode, setNextIncomeNode, &newIncome, (void **) &(stud->incomesList));
 
             stud->insertsTotal += income;
             stud->insertsCount++;
             stud->averageOfInserts = stud->insertsTotal / stud->insertsCount;
-        } else if (strcmp(op, "ws") == 0) {
+        } else if (strcmp(op, OP_CODE_WANTED_STUD) == 0) {
             unsigned int id;
             scanf("%d", &id);
             Stud* stud = getStudent(students, id, currentIndex);
             if (stud != NULL) {
                 printStudent(stud);
             } else {
-                printf("NA");
+                printf(ERROR_NOT_AVAILABLE);
                 destructStudents(students, currentIndex);
                 return 0;
             }
-
-        } else if (strcmp(op, "pa") == 0) {
+        } else if (strcmp(op, OP_CODE_PRINT_ARRAY) == 0) {
             printAllStudents(students, currentIndex);
-        } else if (strcmp(op, "sa") == 0) {
-            char sortBy[3];
+        } else if (strcmp(op, OP_CODE_SORT_ARRAY) == 0) {
+            char sortBy[SORT_BY_LENGTH + 1];
             scanf("%s", sortBy);
-            if (strcmp(sortBy, "ia") == 0)
-                sortArray(compareByIDAscending, students, currentIndex - 1);
-//                mergesort(students, 0, currentIndex, compareByIDAscending);
-//                qsort((void*)students, (size_t) currentIndex, sizeof(Stud), compareByIDAscending);
-            else if (strcmp(sortBy, "id") == 0)
-                sortArray(compareByIDDescending, students, currentIndex - 1);
-//                qsort((void*)students, (size_t) currentIndex, sizeof(Stud), compareByIDDescending);
-            if (strcmp(sortBy, "ga") == 0)
-                sortArray(compareByAvgGradeAscending, students, currentIndex - 1);
-//                qsort((void*)students, (size_t) currentIndex, sizeof(Stud), compareByAvgGradeAscending);
-            if (strcmp(sortBy, "gd") == 0)
-                sortArray(compareByAvgGradeDescending, students, currentIndex - 1);
-//                qsort((void*)students, (size_t) currentIndex, sizeof(Stud), compareByAvgGradeDescending);
-//                mergesort(students, 0, currentIndex, compareByAvgGradeDescending);
-
+            if (strcmp(sortBy, OP_CODE_SORT_BY_INCOME_ASC) == 0)
+                sortArray(compareByIDAscending, students, currentIndex);
+            else if (strcmp(sortBy, OP_CODE_SORT_BY_INCOME_DES) == 0)
+                sortArray(compareByIDDescending, students, currentIndex);
+            else if (strcmp(sortBy, OP_CODE_SORT_BY_GRADE_ASC) == 0)
+                sortArray(compareByAvgGradeAscending, students, currentIndex);
+            else if (strcmp(sortBy, OP_CODE_SORT_BY_GRADE_DES) == 0)
+                sortArray(compareByAvgGradeDescending, students, currentIndex);
         }
         scanf("%s", op);
     }
-
-
     destructStudents(students, currentIndex);
     return 0;
+}
+
+void destructStudents(Stud students[], int size) {
+    for (int i = 0; i < size; ++i) {
+        destructLinkedList(getNextGradeNode, students[i].gradesList);
+        destructLinkedList(getNextIncomeNode, students[i].incomesList);
+    }
 }
